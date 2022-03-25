@@ -1,10 +1,14 @@
 import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import Schedule from './Schedule';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div>
-      <h1>TVMaze App</h1>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Schedule />
+    </QueryClientProvider>
   );
 }
 
