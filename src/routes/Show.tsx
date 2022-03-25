@@ -1,3 +1,4 @@
+import { Card, Col, Container, ListGroup, Row } from "react-bootstrap";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { getShow } from "../api";
@@ -15,7 +16,30 @@ const Show = () => {
   return (
     <div>
       <h2>{data?.name}</h2>
-      <div dangerouslySetInnerHTML={{ __html: data?.summary ?? "" }}>{}</div>
+      <Row xs="auto">
+        <Col>
+          <img src={data?.image?.medium} alt="banner" />
+        </Col>
+        <Col>
+          <Card style={{ width: "18rem" }}>
+            <Card.Header>
+              <strong>Show Info</strong>
+            </Card.Header>
+            <ListGroup variant="flush">
+              <ListGroup.Item>
+                <strong>Premiered:</strong> {data?.premiered}
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <strong>Rating:</strong> {data?.rating.average}
+              </ListGroup.Item>
+            </ListGroup>
+          </Card>
+        </Col>
+      </Row>
+      <div>
+        <h3>Summary</h3>
+        <div dangerouslySetInnerHTML={{ __html: data?.summary ?? "" }}></div>
+      </div>
     </div>
   );
 };

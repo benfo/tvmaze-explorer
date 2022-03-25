@@ -16,6 +16,9 @@ export interface Show {
   summary: null | string;
   language: string;
   genres: string[];
+  officialSite?: string;
+  premiered?: string;
+  ended?: string;
   _links: FluffyLinks;
   _embedded: Embedded;
 }
