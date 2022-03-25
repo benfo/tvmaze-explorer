@@ -1,6 +1,6 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useDebounce } from "react-use";
 import { searchShows } from "../api";
 
@@ -10,6 +10,10 @@ const Home = () => {
   var { isLoading, data } = useQuery(["search", query], () =>
     searchShows(query)
   );
+
+  useEffect(() => {
+    setQuery(searchParams.get("q") ?? "");
+  }, []);
 
   useDebounce(
     () => {
@@ -29,12 +33,19 @@ const Home = () => {
 
   return (
     <div>
-      <input autoFocus type="text" onChange={handleSearchChange} />
+      <input
+        autoFocus
+        type="text"
+        value={query}
+        onChange={handleSearchChange}
+      />
       {isLoading && <div>Loading... </div>}
       {
         <ul>
-          {data?.map((show) => (
-            <li>{show.show.name}</li>
+          {data?.map((result) => (
+            <li>
+              <Link to={`/shows/${result.show.id}`}>{result.show.name}</Link>
+            </li>
           ))}
         </ul>
       }

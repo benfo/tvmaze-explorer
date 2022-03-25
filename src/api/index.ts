@@ -20,3 +20,12 @@ export const searchShows = async (query: string) => {
     .then((res) => res.data);
   return results;
 };
+
+export const getShow = async (showId?: string) => {
+  if (showId) {
+    const result = await axios
+      .get<Show>(`shows/${showId}`)
+      .then((res) => res.data);
+    return result;
+  }
+};
