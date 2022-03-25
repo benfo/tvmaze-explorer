@@ -8,7 +8,7 @@ const Navigation = () => {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href={home}>TV Maze</Navbar.Brand>
+        <Navbar.Brand href={home}>TVmaze Explorer</Navbar.Brand>
         <Nav>
           <LinkContainer to="/">
             <Nav.Link href={home}>Home</Nav.Link>
