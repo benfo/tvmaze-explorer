@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import { getSchedule } from "./api";
-import { Show } from "./models";
+import { Link } from "react-router-dom";
+import { getSchedule } from "../api";
+import { Show } from "../models";
 
 const Schedule = () => {
   const { isLoading, error, data, isFetching } = useQuery<Show[]>(
@@ -18,7 +19,11 @@ const Schedule = () => {
       <h1>TV Schedule</h1>
       <ol>
         {data?.map((s) => (
-          <li>{s.name} (Season: {s.season})</li>
+          <li>
+            <Link to={`/shows/${s.id}`}>
+              {s.name} (Season: {s.season})
+            </Link>
+          </li>
         ))}
       </ol>
     </div>
