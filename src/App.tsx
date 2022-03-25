@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
-import Home from "./screens/Home";
-import Schedule from "./screens/Schedule";
-import Show from "./screens/Show";
-import Shows from "./screens/Shows";
+import Home from "./routes/Home";
+import Schedule from "./routes/Schedule";
+import Show from "./routes/Show";
+import Shows from "./routes/Shows";
 
 function App() {
   return (
