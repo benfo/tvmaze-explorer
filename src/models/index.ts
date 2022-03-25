@@ -14,6 +14,8 @@ export interface Show {
   rating: Rating;
   image: Image | null;
   summary: null | string;
+  language: string;
+  genres: string[];
   _links: FluffyLinks;
   _embedded: Embedded;
 }
